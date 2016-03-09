@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<folder>
+    <parent>/</parent>
+    <name>Resources</name>
+    <label>Resources</label>
+    <description></description>
+    <creationDate>2015-02-16T14:54:25.000+05:30</creationDate>
+    <updateDate>2016-01-07T16:13:48.000+05:30</updateDate>
+    <resource>from_date</resource>
+    <resource>jss_logo</resource>
+    <resource>to_date</resource>
+</folder>

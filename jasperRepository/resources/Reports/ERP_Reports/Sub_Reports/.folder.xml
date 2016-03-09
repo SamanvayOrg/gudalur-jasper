@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<folder>
+    <parent>/Reports/ERP_Reports</parent>
+    <name>Sub_Reports</name>
+    <label>Sub_Reports</label>
+    <description>SubReport Directory</description>
+    <creationDate>2016-03-08T10:05:17.000+05:30</creationDate>
+    <updateDate>2016-03-08T10:05:17.000+05:30</updateDate>
+    <resource>IPD_Form</resource>
+    <resource>IPD_Statement_Lab</resource>
+    <resource>IPD_Statement_Med</resource>
+    <resource>IPD_Statement_Proc</resource>
+</folder>

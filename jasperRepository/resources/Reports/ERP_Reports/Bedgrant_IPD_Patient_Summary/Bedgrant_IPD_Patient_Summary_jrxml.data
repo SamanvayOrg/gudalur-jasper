@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2016-03-09T17:44:14 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bg_ipd_pat_summary" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="b0dc7381-9148-45f5-9537-daa5d58e2a61">
+	<parameter name="from_date" class="java.util.Date"/>
+	<parameter name="to_date" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[select  rp.name,rpa.address1,sv.visit_startdate ,sv.visit_stopdate,
+  case when sv.diagnoses IS NULL then ''
+  else sv.diagnoses END as diagnosis,sum(so.amount_total)  as cost,
+  sum(so.amount_total) as claim_amount
+from syncjob_visit sv
+  INNER JOIN res_partner rp on rp.id=sv.erp_patient_id AND
+                               sv.visit_type_id=1
+                               and cast(sv.visit_stopdate as date) BETWEEN $P{from_date} AND $P{to_date}
+inner join claim_type ct on ct.erp_patient_id=rp.id and ct.claim_type=2
+inner JOIN res_partner_address rpa on rp.id = rpa.partner_id
+inner join res_partner_attributes rpat on rpat.partner_id=sv.erp_patient_id and rpat."x_Is_Tribal"='True'
+inner join sale_order so ON so.partner_id=rp.id and so.state!='draft'
+and cast(so.create_date as date) BETWEEN $P{from_date} AND $P{to_date}
+GROUP BY sv.visit_startdate,sv.visit_stopdate,sv.diagnoses,sv.erp_patient_id,rp.name,rpa.address1]]>
+	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="visit_startdate" class="java.sql.Timestamp"/>
+	<field name="visit_stopdate" class="java.sql.Timestamp"/>
+	<field name="diagnosis" class="java.lang.String"/>
+	<field name="cost" class="java.math.BigDecimal"/>
+	<field name="claim_amount" class="java.math.BigDecimal"/>
+	<variable name="amount_sum" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{claim_amount}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="106" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="657fb760-de60-451a-a306-b1d64454ebab"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[ASHWINI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="10" width="430" height="40" uuid="3df4429f-df11-422f-96b3-5695a720952c"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONSOLIDATED MONTHLY REPORT FOR IN-PATIENT
+TREATMENT GIVEN TO BED GRANT PATIENTS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="510" y="0" width="40" height="30" uuid="451585e4-036a-4bbb-aaf7-8d6899e6de5c"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="47" width="550" height="1" uuid="be829d67-b673-4445-aae0-b6e4f599837c"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="83" width="140" height="15" uuid="839d86ec-943b-4be2-bfe6-7761a719dd21">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="59" width="140" height="15" uuid="df741346-fea6-4447-aab0-7fd850308854">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Name of the NGO Hospital]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="60" width="260" height="15" uuid="7d57b358-4d62-4e9e-8a4e-b547930941bb">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[ASHWINI (Gudalur Adivasi Hospital)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="83" width="370" height="15" uuid="b78dfb25-fb37-476c-94d4-92a657eab261">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Thottamoola, Post Box. 20, Gudalur, The Nilgiris. 643 212]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="59" splitType="Stretch">
+			<staticText>
+				<reportElement x="190" y="22" width="100" height="20" uuid="23d55b1e-03df-4ae3-b455-b2830c3f0d28"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diagnosis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="22" width="50" height="20" uuid="a938f97a-a507-421d-bc68-78a76662d7fa">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="22" width="100" height="28" uuid="e53394a2-486a-44fb-81dd-a5dc4ec28573"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Period of
+Treatment]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="22" width="100" height="29" uuid="1bdd742c-38f1-4b9c-9162-88b22ee6c0be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name of Patient &
+Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="23" width="30" height="19" uuid="882bb678-c725-4970-bf4c-c79bda0622ea"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sl.
+No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="24" uuid="053e1439-6f55-4471-8bfb-5c0a2149c18e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Month & Year]]></text>
+			</staticText>
+			<textField pattern="MMMMM, yyyy">
+				<reportElement x="80" y="0" width="100" height="20" uuid="2dc64b2a-12b3-455c-bf94-ba36cdc2bc61"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{to_date}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="20" width="552" height="1" uuid="d05e4953-c388-48ea-8471-f7c212354cbb"/>
+			</line>
+			<line>
+				<reportElement x="0" y="51" width="552" height="1" uuid="4c5c9752-867a-4141-835c-63ba5c4c1d03"/>
+			</line>
+			<staticText>
+				<reportElement x="500" y="22" width="52" height="28" uuid="698d5705-e33b-47a9-9a68-3a95738d8ebb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Claim
+Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="49" splitType="Immediate">
+			<textField>
+				<reportElement x="50" y="0" width="100" height="15" uuid="f755a2a5-7f69-49a5-9ca5-96c82e977152">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="15" width="100" height="30" uuid="0dab284e-7133-4fc8-96e4-e3288262baf1">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{address1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="0" width="100" height="30" uuid="1f1bff77-b5dc-43eb-aaeb-092a8bb7b5e9">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{diagnosis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="0" width="100" height="15" uuid="618ea5c2-af2b-4436-9ba5-e352208a87d9"/>
+				<textFieldExpression><![CDATA[$F{visit_startdate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="22" width="100" height="15" uuid="b50af018-0a93-422f-b70f-49b2a437c68b">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{visit_stopdate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="50" height="30" uuid="63d02a4d-a3bd-427e-9106-c6a77426e32d">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cost}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="42" width="560" height="1" uuid="2d74dce3-7bcc-452b-9d92-d0770b147c0a"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="29" height="30" uuid="b8c4c73a-1f8f-4ad9-a7bf-dceb26d49078"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="45" height="30" uuid="fb963f30-5fb1-4a0d-826e-4c0aca4581c1">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{claim_amount}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="44" width="100" height="30" uuid="88275105-2fa9-413a-ac37-85c46f33fbc7"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement x="60" y="44" width="100" height="15" uuid="a9aec41e-2f43-477e-b8dc-517b75e431c0">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="74" width="100" height="30" uuid="1cdaf4a3-4859-4a8c-abb6-6e3d7f759bb1"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Place]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="80" width="220" height="40" uuid="90fe9beb-4f8a-4142-a723-a8b10e0bf917"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Medical Superintendent
+Gudalur Adivasi Hospital]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="452" y="0" width="100" height="30" uuid="74225be5-fa76-4ec5-b0dc-1ecff1b2faf8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{amount_sum}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="220" y="0" width="220" height="30" uuid="1af3b8bc-e04a-4dd1-8965-76dc4f90a24a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Total Cost for the Month =]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="30" width="560" height="1" uuid="3ad0eb2c-2e3f-4147-b9de-9fc3863d3f3c"/>
+			</line>
+		</band>
+	</columnFooter>
+</jasperReport>

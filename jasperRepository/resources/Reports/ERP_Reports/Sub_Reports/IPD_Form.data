@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2016-03-09T16:54:24 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sickcell_cost_investigation" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isFloatColumnFooter="true" uuid="8ff9c598-a154-4be2-8679-071d79104d24">
+	<parameter name="patient_id" class="java.lang.Integer"/>
+	<parameter name="from_date" class="java.sql.Timestamp"/>
+	<parameter name="to_date" class="java.sql.Timestamp"/>
+	<queryString>
+		<![CDATA[with investigation as (SELECT sum(price_unit * sol.product_uom_qty) AS investsum
+                  FROM sale_order_line sol
+                  WHERE product_id IN (
+                    SELECT pp.id
+                    FROM product_product pp
+                      INNER JOIN product_template pt ON pp.product_tmpl_id = pt.id
+                    WHERE pt.categ_id IN (SELECT category_id
+                                          FROM syncjob_chargetype_category_mapping
+                                          WHERE chargetype_name = 'Investigations'))
+                        AND (sol.create_date BETWEEN $P{from_date} AND $P{to_date})
+                        AND (sol.state = 'confirmed')
+                        AND sol.order_partner_id = $P{patient_id}),
+procedure as (SELECT sum(price_unit * sol.product_uom_qty) AS presum
+              FROM sale_order_line sol
+              WHERE product_id IN (
+                SELECT pp.id
+                FROM product_product pp
+                  INNER JOIN product_template pt ON pp.product_tmpl_id = pt.id
+                WHERE pt.categ_id IN (SELECT category_id
+                                      FROM syncjob_chargetype_category_mapping
+                                      WHERE chargetype_name = 'Procedure'))
+                    AND (sol.create_date BETWEEN $P{from_date} AND $P{to_date})
+                    AND (sol.state = 'confirmed')
+                    AND sol.order_partner_id = $P{patient_id}),
+medicine as (SELECT sum(price_unit * sol.product_uom_qty) AS medsum
+FROM sale_order_line sol
+WHERE product_id IN (
+SELECT pp.id
+FROM product_product pp
+INNER JOIN product_template pt ON pp.product_tmpl_id = pt.id
+WHERE pt.categ_id IN (SELECT category_id
+FROM syncjob_chargetype_category_mapping
+WHERE chargetype_name = 'Medicines'))
+AND (sol.create_date BETWEEN $P{from_date} AND $P{to_date})
+AND (sol.state = 'confirmed')
+AND sol.order_partner_id = $P{patient_id})
+select  coalesce(medicine.medsum, 0) as medsum, coalesce(procedure.presum, 0) as presum,
+ coalesce(investigation.investsum, 0) as investsum,( coalesce(medicine.medsum, 0)+ coalesce(procedure.presum, 0)+
+ coalesce(investigation.investsum, 0)) as total from procedure,medicine,investigation;]]>
+	</queryString>
+	<field name="medsum" class="java.math.BigDecimal"/>
+	<field name="presum" class="java.math.BigDecimal"/>
+	<field name="investsum" class="java.math.BigDecimal"/>
+	<field name="total" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="73" splitType="Stretch">
+			<textField>
+				<reportElement x="190" y="27" width="160" height="15" uuid="86601e1f-2471-4665-a0af-2a80f00633ab"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{medsum}.setScale( 2, java.math.RoundingMode.HALF_UP)+""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="27" width="170" height="15" uuid="fe103daa-c6a1-4c1c-bb75-edc90726f3d0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Cost of Medicines used]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="190" y="51" width="160" height="15" uuid="03617f48-0978-4453-878b-fa8454bd9822">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{presum}.setScale( 2, java.math.RoundingMode.HALF_UP)+""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="51" width="170" height="15" uuid="a09f6c24-30f3-4861-8b1a-d22997bc8136"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Cost of Procedure std charges]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="190" y="4" width="160" height="15" uuid="bac5d10f-d47d-4a56-93f4-1a7acc151019"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{investsum}.setScale( 2, java.math.RoundingMode.HALF_UP)+""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="4" width="170" height="15" uuid="26382511-2fe4-49c0-9746-55693be22a99">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Cost of Investigations done]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="47">
+			<staticText>
+				<reportElement x="20" y="8" width="180" height="20" uuid="e9718b2d-445f-489b-b183-3d026bda933f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Costs]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="30" width="297" height="1" uuid="7d6b16a8-7abd-4402-b128-1c2424348d5c"/>
+			</line>
+			<line>
+				<reportElement x="2" y="5" width="297" height="1" uuid="3b645f25-725c-4383-8940-1786da77d375"/>
+			</line>
+			<textField>
+				<reportElement x="190" y="7" width="100" height="20" uuid="c7a34f96-51b8-4e08-8f81-08b6a295e360"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}.setScale( 2, java.math.RoundingMode.HALF_UP)+""]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

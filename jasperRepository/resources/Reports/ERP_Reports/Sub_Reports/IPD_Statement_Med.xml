@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fileResource dataFile="IPD_Statement_Med.data">
+    <folder>/Reports/ERP_Reports/Sub_Reports</folder>
+    <name>IPD_Statement_Med</name>
+    <version>0</version>
+    <label>IPD_Statement_Med</label>
+    <description>IPD Form for Sicklecell and Bedgrant</description>
+    <creationDate>2016-03-08T10:08:56.000+05:30</creationDate>
+    <updateDate>2016-03-08T10:08:56.000+05:30</updateDate>
+    <fileType>jrxml</fileType>
+</fileResource>
