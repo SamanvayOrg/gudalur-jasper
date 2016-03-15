@@ -13,4 +13,6 @@
     <resource>Bedgrant_IPD_Patient_Summary</resource>
     <resource>Bedgrant_IPD_Patient_Form</resource>
     <resource>Sicklecell_IPD_Patient_Form</resource>
+    <resource>DepartmentWise_Collection</resource>
+    <resource>Daybook</resource>
 </folder>
