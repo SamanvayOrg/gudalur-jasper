@@ -9,4 +9,5 @@
     <resource>from_date</resource>
     <resource>jss_logo</resource>
     <resource>to_date</resource>
+    <resource>department</resource>
 </folder>

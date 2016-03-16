@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inputControl>
+    <folder>/Resources</folder>
+    <name>department</name>
+    <version>9</version>
+    <label>Please select a department</label>
+    <description></description>
+    <creationDate>2016-01-24T16:17:58.628+05:30</creationDate>
+    <updateDate>2016-01-24T17:19:03.645+05:30</updateDate>
+    <type>4</type>
+    <mandatory>true</mandatory>
+    <readOnly>false</readOnly>
+    <visible>true</visible>
+    <query>
+        <localResource
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="query">
+            <folder>/Resources/departments_files</folder>
+            <name>get_all_departments</name>
+            <version>4</version>
+            <label>departmentQuery</label>
+            <description></description>
+            <creationDate>2013-01-24T16:17:58.628+05:30</creationDate>
+            <updateDate>2013-01-24T16:17:58.628+05:30</updateDate>
+            <language>sql</language>
+            <queryString>select DISTINCT department_name from syncjob_department_category_mapping</queryString>
+            <dataSource>
+                <uri>/Data_Sources/openerp</uri>
+            </dataSource>
+        </localResource>
+    </query>
+    <queryVisibleColumn>department_name</queryVisibleColumn>
+    <queryValueColumn>department_name</queryValueColumn>
+</inputControl>
