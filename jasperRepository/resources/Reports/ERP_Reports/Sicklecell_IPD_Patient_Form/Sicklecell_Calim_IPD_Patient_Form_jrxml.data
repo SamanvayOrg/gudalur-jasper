@@ -13,7 +13,7 @@ case when sv.diagnoses IS NULL then ''
   sv.visit_type_id=1 and cast(sv.visit_stopdate as date) BETWEEN $P{from_date} AND $P{to_date}
   inner JOIN syncjob_patient_extn spe on spe.erp_id=sv.erp_patient_id
   INNER JOIN res_partner rp on rp.id=sscp.erp_id
-  inner join claim_type ct on ct.erp_patient_id=rp.id and ct.claim_type=1
+  inner join claim_type ct on ct.erp_patient_id=rp.id and ct.claim_type='1'
   inner JOIN res_partner_address rpa on rp.id = rpa.partner_id]]>
 	</queryString>
 	<field name="erp_patient_id" class="java.lang.Integer"/>

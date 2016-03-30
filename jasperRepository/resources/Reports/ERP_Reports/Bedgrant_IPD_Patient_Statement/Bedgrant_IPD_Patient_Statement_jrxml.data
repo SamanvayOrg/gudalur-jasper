@@ -8,7 +8,7 @@
 		<![CDATA[select rp.id,rp.ref,rp.name,sv.visit_startdate,sv.visit_stopdate from syncjob_visit sv
 inner join res_partner rp on rp.id=sv.erp_patient_id and sv.visit_type_id=1
 and cast(sv.visit_stopdate as date) BETWEEN $P{from_date} AND $P{to_date}
-inner join claim_type ct on ct.erp_patient_id=rp.id and ct.claim_type=2
+inner join claim_type ct on ct.erp_patient_id=rp.id and ct.claim_type='2'
 inner join res_partner_attributes rpa on rpa.partner_id=sv.erp_patient_id and rpa."x_Is_Tribal"='True'
 GROUP BY rp.id,sv.visit_startdate,sv.visit_stopdate]]>
 	</queryString>

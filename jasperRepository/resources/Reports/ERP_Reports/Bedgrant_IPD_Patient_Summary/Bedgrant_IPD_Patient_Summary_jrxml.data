@@ -13,7 +13,7 @@ from syncjob_visit sv
   INNER JOIN res_partner rp on rp.id=sv.erp_patient_id AND
                                sv.visit_type_id=1
                                and cast(sv.visit_stopdate as date) BETWEEN $P{from_date} AND $P{to_date}
-inner join claim_type ct on ct.erp_patient_id=rp.id and ct.claim_type=2
+inner join claim_type ct on ct.erp_patient_id=rp.id and ct.claim_type='2'
 inner JOIN res_partner_address rpa on rp.id = rpa.partner_id
 inner join res_partner_attributes rpat on rpat.partner_id=sv.erp_patient_id and rpat."x_Is_Tribal"='True'
 inner join sale_order so ON so.partner_id=rp.id and so.state!='draft'
