@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
-<!-- 2016-03-24T14:35:35 -->
+<!-- 2016-04-13T15:43:30 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="scheduleH" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e049d7d9-2702-42e7-b42e-ca024a798758">
 	<parameter name="from_date" class="java.util.Date"/>
     <parameter name="to_date" class="java.util.Date"/>
@@ -28,21 +28,51 @@ GROUP BY rp.id,pt.name,sol.product_uom_qty,sol.price_unit,so.provider_name,rpa."
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="40" splitType="Stretch">
+		<band height="51" splitType="Stretch">
 			<staticText>
 				<reportElement x="120" y="0" width="264" height="30" uuid="8f27233c-3fcf-4a89-85b8-b8ca0d137371"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="16" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Schedule - H Drugs Report]]></text>
+				<text><![CDATA[Daily Report Schedule - H Drugs ]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="151" y="33" width="30" height="18" uuid="a5d06c5b-9924-49bc-afd7-baf1c8bbf161"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[from]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="262" y="33" width="20" height="18" uuid="da49bedb-0e6d-476c-a8d0-4d9b71e75dc3"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[to]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="283" y="33" width="80" height="18" uuid="ab88bf8f-a8a5-45c5-be55-6e1351b69b7a">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$P{to_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="182" y="33" width="80" height="18" uuid="82defd38-dd0e-4a4d-b01b-f71f678926ff">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$P{from_date}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<detail>
 		<band height="144" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="31" width="60" height="20" uuid="2d070e2b-2b42-4fd2-88db-8d3079d8c28b"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement x="0" y="31" width="60" height="30" uuid="2d070e2b-2b42-4fd2-88db-8d3079d8c28b">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
@@ -57,10 +87,11 @@ GROUP BY rp.id,pt.name,sol.product_uom_qty,sol.price_unit,so.provider_name,rpa."
 				<text><![CDATA[Name]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="76" y="31" width="60" height="20" uuid="3cf6d47f-096c-4fd6-aab7-30f1d060b60a">
+				<reportElement x="76" y="31" width="60" height="30" uuid="3cf6d47f-096c-4fd6-aab7-30f1d060b60a">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{village}]]></textFieldExpression>
@@ -75,8 +106,10 @@ GROUP BY rp.id,pt.name,sol.product_uom_qty,sol.price_unit,so.provider_name,rpa."
 				<text><![CDATA[Village]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="155" y="30" width="60" height="20" uuid="377e446b-f285-4a1e-9934-56105ad12597"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement x="155" y="30" width="60" height="30" uuid="377e446b-f285-4a1e-9934-56105ad12597">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{caste}]]></textFieldExpression>
@@ -89,8 +122,10 @@ GROUP BY rp.id,pt.name,sol.product_uom_qty,sol.price_unit,so.provider_name,rpa."
 				<text><![CDATA[Caste]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="235" y="31" width="60" height="20" uuid="b641036d-2cf0-4a3f-a491-58af7df511b4"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement x="235" y="31" width="60" height="30" uuid="b641036d-2cf0-4a3f-a491-58af7df511b4">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{medicine}]]></textFieldExpression>
@@ -103,10 +138,11 @@ GROUP BY rp.id,pt.name,sol.product_uom_qty,sol.price_unit,so.provider_name,rpa."
 				<text><![CDATA[Medicine]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="311" y="30" width="45" height="20" uuid="5e1cd791-aa4d-499a-a085-0d6285156a0f">
+				<reportElement x="311" y="30" width="45" height="30" uuid="5e1cd791-aa4d-499a-a085-0d6285156a0f">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{product_uom_qty}]]></textFieldExpression>
@@ -121,8 +157,10 @@ GROUP BY rp.id,pt.name,sol.product_uom_qty,sol.price_unit,so.provider_name,rpa."
 				<text><![CDATA[Quantity]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="377" y="30" width="60" height="20" uuid="d7bf2ae0-23b8-40ba-b64b-bb7ae34fe23f"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement x="377" y="30" width="60" height="30" uuid="d7bf2ae0-23b8-40ba-b64b-bb7ae34fe23f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Bill Amount}]]></textFieldExpression>
@@ -135,8 +173,10 @@ GROUP BY rp.id,pt.name,sol.product_uom_qty,sol.price_unit,so.provider_name,rpa."
 				<text><![CDATA[Bill Amount]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="460" y="31" width="60" height="20" uuid="8388c745-00cf-4554-8017-6ab32133e8ae"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement x="460" y="31" width="100" height="30" uuid="8388c745-00cf-4554-8017-6ab32133e8ae">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{provider_name}]]></textFieldExpression>
@@ -148,9 +188,6 @@ GROUP BY rp.id,pt.name,sol.product_uom_qty,sol.price_unit,so.provider_name,rpa."
 				</textElement>
 				<text><![CDATA[Doctor Name]]></text>
 			</staticText>
-			<break>
-				<reportElement x="0" y="70" width="550" height="1" uuid="56771225-8859-499d-8ebe-442f48b94013"/>
-			</break>
 			<line>
 				<reportElement x="0" y="26" width="560" height="1" uuid="84fdb5f4-f0c5-46d1-ab70-3d076d61d872"/>
 			</line>
