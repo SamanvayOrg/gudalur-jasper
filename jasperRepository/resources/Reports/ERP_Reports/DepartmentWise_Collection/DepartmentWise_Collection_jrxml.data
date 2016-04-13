@@ -2,8 +2,6 @@
 <!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
 <!-- 2016-04-13T15:42:08 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="department_wise_revenue" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="08da130f-c2ba-41a3-abef-7b2babca9205">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="openerp adapter"/>
-	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="to_date" class="java.util.Date"/>
 	<parameter name="from_date" class="java.util.Date"/>
 	<queryString language="bahmniReport">
@@ -141,21 +139,21 @@
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{charityTotal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[BigDecimal.valueOf($F{charityTotal}).setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="134" y="104" width="80" height="19" uuid="31a2cb42-bca0-4bdd-9a74-3ef87b339456"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{collectedTotal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[BigDecimal.valueOf($F{collectedTotal}).setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="363" y="104" width="80" height="19" uuid="45f68081-701b-45cb-9408-ff1228bff07b"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{refundTotal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[BigDecimal.valueOf($F{refundTotal}).setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="133" y="55" width="80" height="19" uuid="a637ee53-c4a6-4a78-9cc6-9b3e96ebc4a4">
@@ -165,42 +163,42 @@
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{paidAmountTribal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[BigDecimal.valueOf($F{paidAmountTribal}).setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="363" y="55" width="80" height="19" uuid="b96008b3-c4d9-49b2-a1a0-4ce4a3b46a22"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{refundAmountTribal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[BigDecimal.valueOf($F{refundAmountTribal}).setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="248" y="55" width="80" height="19" uuid="0a818494-6ab9-4c43-af09-f47dd9256955"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{totalCharityTribal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[BigDecimal.valueOf($F{totalCharityTribal}).setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="134" y="80" width="80" height="19" uuid="bb0120ed-5c08-498e-963c-4b56a3c3580f"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{paidAmountNonTribal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[BigDecimal.valueOf($F{paidAmountNonTribal}).setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="363" y="80" width="80" height="19" uuid="2657bc3c-8400-4108-9496-9adbc5124cc6"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{refundAmountNonTribal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[BigDecimal.valueOf($F{refundAmountNonTribal}).setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="249" y="80" width="80" height="19" uuid="e608eed8-3a2f-46ca-bab7-e478737dba81"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{totalCharityNonTribal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[BigDecimal.valueOf($F{totalCharityNonTribal}).setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="4" y="130" width="549" height="1" uuid="6414c9d3-554c-4510-b07c-46e8736e7ffc"/>
