@@ -141,21 +141,21 @@
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{charityTotal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{charityTotal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="120" y="98" width="80" height="19" uuid="31a2cb42-bca0-4bdd-9a74-3ef87b339456"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{collectedTotal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{collectedTotal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="363" y="98" width="80" height="19" uuid="45f68081-701b-45cb-9408-ff1228bff07b"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{refundTotal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{refundTotal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="119" y="49" width="80" height="19" uuid="a637ee53-c4a6-4a78-9cc6-9b3e96ebc4a4">
@@ -165,42 +165,42 @@
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{paidAmountTribal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{paidAmountTribal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="363" y="49" width="80" height="19" uuid="b96008b3-c4d9-49b2-a1a0-4ce4a3b46a22"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{refundAmountTribal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{refundAmountTribal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="239" y="49" width="80" height="19" uuid="0a818494-6ab9-4c43-af09-f47dd9256955"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{totalCharityTribal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{totalCharityTribal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="120" y="74" width="80" height="19" uuid="bb0120ed-5c08-498e-963c-4b56a3c3580f"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{paidAmountNonTribal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{paidAmountNonTribal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="363" y="74" width="80" height="19" uuid="2657bc3c-8400-4108-9496-9adbc5124cc6"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{refundAmountNonTribal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{refundAmountNonTribal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="240" y="74" width="80" height="19" uuid="e608eed8-3a2f-46ca-bab7-e478737dba81"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{totalCharityNonTribal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{totalCharityNonTribal}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="2" y="141" width="549" height="1" uuid="8ae0e5e0-a042-4e4d-939c-c4341c8f4ae8"/>
