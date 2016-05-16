@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
-<!-- 2016-05-16T14:43:07 -->
+<!-- 2016-05-16T15:28:42 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="department_wise_revenue" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="08da130f-c2ba-41a3-abef-7b2babca9205">
 	<parameter name="to_date" class="java.util.Date"/>
 	<parameter name="from_date" class="java.util.Date"/>
@@ -22,7 +22,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="122" splitType="Stretch">
+		<band height="125" splitType="Stretch">
 			<staticText>
 				<reportElement x="92" y="2" width="333" height="30" uuid="95a58bb5-3903-4356-a9a9-752761722d83"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -73,96 +73,124 @@
 				<text><![CDATA[Average/Patient]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="237" y="87" width="63" height="19" uuid="aeca9111-7ca9-473e-bc50-39c8c0bce914"/>
+				<reportElement x="237" y="88" width="63" height="19" uuid="aeca9111-7ca9-473e-bc50-39c8c0bce914"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Arial" size="10"/>
 				</textElement>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="161" y="88" width="63" height="18" uuid="1cc4dbc6-eda5-44db-9a55-3abdf78765c2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Arial" size="10"/>
 				</textElement>
 				<text><![CDATA[Non-Tribals]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="84" y="88" width="63" height="20" uuid="70dd1459-d67c-402c-95b7-52ac56451042">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Arial" size="10"/>
 				</textElement>
 				<text><![CDATA[Tribals]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="328" y="87" width="63" height="20" uuid="5ed571ac-eb39-4732-abee-2ac193e8f771">
+				<reportElement x="328" y="88" width="63" height="20" uuid="5ed571ac-eb39-4732-abee-2ac193e8f771">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Arial" size="10"/>
 				</textElement>
 				<text><![CDATA[Tribals]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="403" y="87" width="63" height="18" uuid="ca635f9e-c0f8-425d-80c0-1046fe3ae8ca"/>
+				<reportElement x="403" y="88" width="63" height="18" uuid="ca635f9e-c0f8-425d-80c0-1046fe3ae8ca"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Arial" size="10"/>
 				</textElement>
 				<text><![CDATA[Non-Tribals]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="487" y="86" width="63" height="19" uuid="75f88e0c-a945-408f-8aea-86e9215b533a">
+				<reportElement x="487" y="88" width="63" height="19" uuid="75f88e0c-a945-408f-8aea-86e9215b533a">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Arial" size="10"/>
 				</textElement>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<line>
-				<reportElement x="4" y="119" width="549" height="1" uuid="ab2feac2-4164-44f4-8627-0e7a168a6b3c"/>
+				<reportElement x="4" y="124" width="549" height="1" uuid="ab2feac2-4164-44f4-8627-0e7a168a6b3c"/>
 			</line>
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="44" splitType="Stretch">
+		<band height="33" splitType="Stretch">
 			<line direction="BottomUp">
-				<reportElement x="79" y="-9" width="1" height="32" uuid="7d64fa62-5c22-4fd9-a43e-ca4733d1febf">
+				<reportElement x="79" y="0" width="1" height="32" uuid="7d64fa62-5c22-4fd9-a43e-ca4733d1febf">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 			</line>
 			<line direction="BottomUp">
-				<reportElement x="316" y="-9" width="1" height="32" uuid="a8734c6f-672d-448a-89c0-43adea12b8fb"/>
+				<reportElement x="316" y="0" width="1" height="32" uuid="a8734c6f-672d-448a-89c0-43adea12b8fb"/>
 			</line>
 			<textField>
-				<reportElement x="88" y="1" width="63" height="22" uuid="389d66d3-7848-4cbe-9530-655c83cd9d92"/>
+				<reportElement x="88" y="6" width="63" height="20" uuid="389d66d3-7848-4cbe-9530-655c83cd9d92"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{tribalAmt}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="5" y="2" width="65" height="21" uuid="fbb57c45-6f99-4f82-a0a8-fab624a9d414"/>
+				<reportElement x="5" y="6" width="65" height="20" uuid="fbb57c45-6f99-4f82-a0a8-fab624a9d414">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{type}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="161" y="2" width="63" height="21" uuid="ff7042c6-1ada-41c4-898b-b7e302f186da"/>
+				<reportElement x="161" y="6" width="63" height="20" uuid="ff7042c6-1ada-41c4-898b-b7e302f186da"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{nonTribalAmt}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="238" y="5" width="62" height="16" uuid="6b4549f6-ab46-465e-bac3-ae337707b867"/>
+				<reportElement x="238" y="6" width="62" height="20" uuid="6b4549f6-ab46-465e-bac3-ae337707b867"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{totalAmt}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="330" y="3" width="61" height="18" uuid="43d3cea6-09c0-4ff1-99fb-9e199492470c"/>
+				<reportElement x="330" y="6" width="61" height="20" uuid="43d3cea6-09c0-4ff1-99fb-9e199492470c"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{tribalCount}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="403" y="2" width="63" height="19" uuid="3a4e3971-cd7f-41c0-a41d-e3193f71c184"/>
+				<reportElement x="403" y="6" width="63" height="20" uuid="3a4e3971-cd7f-41c0-a41d-e3193f71c184"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{nonTribalCount}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="487" y="2" width="63" height="19" uuid="4b91e6f1-d872-4665-9df0-50091b57fa3b"/>
+				<reportElement x="487" y="6" width="63" height="20" uuid="4b91e6f1-d872-4665-9df0-50091b57fa3b"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{totalCount}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="5" y="32" width="549" height="1" uuid="1733ac85-b8b0-415c-ad75-4996200c1ea8"/>
+			</line>
 		</band>
 	</detail>
 </jasperReport>

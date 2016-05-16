@@ -43,14 +43,14 @@ GROUP BY rp.id,sv.visit_startdate,sv.visit_stopdate]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="dd-MMM-yyyy">
 				<reportElement x="130" y="48" width="100" height="15" uuid="1952d1db-880c-41a9-bca2-3c979b185831"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{visit_startdate}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="dd-MMM-yyyy">
 				<reportElement x="250" y="48" width="100" height="15" uuid="98da6e1a-81dd-42a0-afdf-096e4cd309f5"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial"/>

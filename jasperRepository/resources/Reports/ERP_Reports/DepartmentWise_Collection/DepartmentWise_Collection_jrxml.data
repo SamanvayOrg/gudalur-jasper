@@ -48,14 +48,14 @@
 				</textElement>
 				<text><![CDATA[to]]></text>
 			</staticText>
-			<textField>
+			<textField pattern="dd-MMM-yyyy">
 				<reportElement x="283" y="33" width="80" height="18" uuid="433ffb52-d3b6-4ee2-889c-ed3dac46b49d">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$P{to_date}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="dd-MMM-yyyy">
 				<reportElement x="182" y="33" width="80" height="18" uuid="f6b45c22-ba13-4522-99cb-abf527b2815d">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>

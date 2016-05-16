@@ -189,11 +189,11 @@ Amount]]></text>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{diagnosis}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="dd-MMM-yyyy">
 				<reportElement x="320" y="0" width="100" height="15" uuid="618ea5c2-af2b-4436-9ba5-e352208a87d9"/>
 				<textFieldExpression><![CDATA[$F{visit_startdate}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="dd-MMM-yyyy">
 				<reportElement x="320" y="22" width="100" height="15" uuid="b50af018-0a93-422f-b70f-49b2a437c68b">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
