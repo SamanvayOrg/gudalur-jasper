@@ -5,7 +5,7 @@
 	<parameter name="from_date" class="java.util.Date"/>
 	<parameter name="to_date" class="java.util.Date"/>
 	<queryString>
-		<![CDATA[select sv.erp_patient_id,rp.ref,rp.name,spe.gender,rpa.address1,sv.visit_startdate,sv.visit_stopdate,
+		<![CDATA[select sv.erp_patient_id,rp.ref,rp.name,spe.gender,rpa.address2 as address1,sv.visit_startdate,sv.visit_stopdate,
 case when sv.diagnoses IS NULL then ''
     else sv.diagnoses END ,
     date_part('year',age(spe.birthdate)) as age from syncjob_visit sv

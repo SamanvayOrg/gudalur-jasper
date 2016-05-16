@@ -15,6 +15,7 @@
     <resource>Sicklecell_IPD_Patient_Form</resource>
     <resource>DepartmentWise_Collection</resource>
     <resource>Daybook</resource>
+    <resource>IP_Cost_Analysis</resource>
     <!--<resource>Collection_For_Depts</resource>-->
     <resource>Schedule_H</resource>
 </folder>

@@ -5,7 +5,7 @@
 	<parameter name="from_date" class="java.util.Date"/>
 	<parameter name="to_date" class="java.util.Date"/>
 	<queryString>
-		<![CDATA[select  rp.name,rpa.address1,sv.visit_startdate ,sv.visit_stopdate,
+		<![CDATA[select  rp.name,rpa.address2 as address1,sv.visit_startdate ,sv.visit_stopdate,
   case when sv.diagnoses IS NULL then ''
   else sv.diagnoses END as diagnosis,sum(so.amount_total)  as cost,
   sum(so.amount_total) as claim_amount
@@ -18,7 +18,7 @@ inner JOIN res_partner_address rpa on rp.id = rpa.partner_id
 inner join res_partner_attributes rpat on rpat.partner_id=sv.erp_patient_id and rpat."x_Is_Tribal"='True'
 inner join sale_order so ON so.partner_id=rp.id and so.state!='draft'
 and cast(so.create_date as date) BETWEEN $P{from_date} AND $P{to_date}
-GROUP BY sv.visit_startdate,sv.visit_stopdate,sv.diagnoses,sv.erp_patient_id,rp.name,rpa.address1]]>
+GROUP BY sv.visit_startdate,sv.visit_stopdate,sv.diagnoses,sv.erp_patient_id,rp.name,rpa.address2]]>
 	</queryString>
 	<field name="name" class="java.lang.String"/>
 	<field name="address1" class="java.lang.String"/>
