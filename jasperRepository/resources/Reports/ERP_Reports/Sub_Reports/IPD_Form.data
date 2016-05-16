@@ -97,7 +97,7 @@ select  coalesce(medicine.medsum, 0) as medsum, coalesce(procedure.presum, 0) as
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<text><![CDATA[Other charges]]></text>
+				<text><![CDATA[Hospital charges]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="190" y="4" width="160" height="15" uuid="bac5d10f-d47d-4a56-93f4-1a7acc151019"/>
