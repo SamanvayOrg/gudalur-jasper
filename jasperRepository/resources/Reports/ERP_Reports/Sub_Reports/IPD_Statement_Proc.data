@@ -17,7 +17,7 @@ WHERE product_id IN(
   WHERE pt.categ_id IN (select category_id from syncjob_chargetype_category_mapping
                           WHERE chargetype_name = 'Procedure'))
       AND (sol.create_date BETWEEN  $P{from_date} AND $P{to_date})
-      AND (sol.state = 'confirmed')
+      AND (sol.state = 'confirmed' or sol.state ='done')
       and sol.order_partner_id=$P{patient_id}
 GROUP BY order_id,sol.name,sol.product_uom_qty,sol.price_unit]]>
 	</queryString>
