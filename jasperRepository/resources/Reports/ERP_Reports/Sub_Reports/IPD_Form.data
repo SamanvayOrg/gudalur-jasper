@@ -16,7 +16,7 @@
                                           FROM syncjob_chargetype_category_mapping
                                           WHERE chargetype_name = 'Investigations'))
                         AND (sol.create_date BETWEEN $P{from_date} AND $P{to_date})
-                        AND (sol.state = 'confirmed')
+                        AND (sol.state = 'confirmed' or sol.state ='done')
                         AND sol.order_partner_id = $P{patient_id}),
 others as (SELECT sum(price_unit * sol.product_uom_qty) AS othersum
                   FROM sale_order_line sol
@@ -28,7 +28,7 @@ others as (SELECT sum(price_unit * sol.product_uom_qty) AS othersum
                                           FROM syncjob_chargetype_category_mapping
                                           WHERE chargetype_name = 'Others'))
                         AND (sol.create_date BETWEEN $P{from_date} AND $P{to_date})
-                        AND (sol.state = 'confirmed')
+                        AND (sol.state = 'confirmed' or sol.state ='done')
                         AND sol.order_partner_id = $P{patient_id}),
 procedure as (SELECT sum(price_unit * sol.product_uom_qty) AS presum
               FROM sale_order_line sol
@@ -40,7 +40,7 @@ procedure as (SELECT sum(price_unit * sol.product_uom_qty) AS presum
                                       FROM syncjob_chargetype_category_mapping
                                       WHERE chargetype_name = 'Procedure'))
                     AND (sol.create_date BETWEEN $P{from_date} AND $P{to_date})
-                    AND (sol.state = 'confirmed')
+                    AND (sol.state = 'confirmed' or sol.state ='done')
                     AND sol.order_partner_id = $P{patient_id}),
 medicine as (SELECT sum(price_unit * sol.product_uom_qty) AS medsum
 FROM sale_order_line sol
@@ -52,7 +52,7 @@ WHERE pt.categ_id IN (SELECT category_id
 FROM syncjob_chargetype_category_mapping
 WHERE chargetype_name = 'Medicines'))
 AND (sol.create_date BETWEEN $P{from_date} AND $P{to_date})
-AND (sol.state = 'confirmed')
+AND (sol.state = 'confirmed' or sol.state ='done')
 AND sol.order_partner_id = $P{patient_id})
 select  coalesce(medicine.medsum, 0) as medsum, coalesce(procedure.presum, 0) as presum,
  coalesce(others.othersum, 0) as othersum,
