@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jdbcDataSource>
+    <folder>/Data_Sources</folder>
+    <name>openerp</name>
+    <version>0</version>
+    <label>openerp</label>
+    <description>OpenERP data source. This will provide the local data source for now. </description>
+    <creationDate>2016-02-23T10:33:50.000+05:30</creationDate>
+    <updateDate>2016-02-23T10:33:50.000+05:30</updateDate>
+    <driver>org.postgresql.Driver</driver>
+    <connectionUrl>jdbc:postgresql://localhost:5432/openerp</connectionUrl>
+    <connectionUser>openerp</connectionUser>
+    <connectionPassword></connectionPassword>
+    <timezone></timezone>
+</jdbcDataSource>

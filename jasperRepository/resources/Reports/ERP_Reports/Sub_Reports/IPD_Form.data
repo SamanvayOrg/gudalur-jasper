@@ -6,7 +6,7 @@
 	<parameter name="from_date" class="java.sql.Timestamp"/>
 	<parameter name="to_date" class="java.sql.Timestamp"/>
 	<queryString>
-		<![CDATA[with investigation as (SELECT sum(price_unit * sol.product_uom_qty) AS investsum
+		<![CDATA[with investigation as (SELECT sum(price_unit * sol.product_uom_qty+ get_tax_amount_for_a_unit(sol.id)*sol.product_uom_qty - get_discount_for_a_unit(sol.id)*sol.product_uom_qty) AS investsum
                   FROM sale_order_line sol
                   WHERE product_id IN (
                     SELECT pp.id
@@ -18,7 +18,7 @@
                         AND (sol.create_date BETWEEN $P{from_date} AND $P{to_date})
                         AND (sol.state = 'confirmed' or sol.state ='done')
                         AND sol.order_partner_id = $P{patient_id}),
-others as (SELECT sum(price_unit * sol.product_uom_qty) AS othersum
+others as (SELECT sum(price_unit * sol.product_uom_qty+ get_tax_amount_for_a_unit(sol.id)*sol.product_uom_qty - get_discount_for_a_unit(sol.id)*sol.product_uom_qty) AS othersum
                   FROM sale_order_line sol
                   WHERE product_id IN (
                     SELECT pp.id
@@ -30,7 +30,7 @@ others as (SELECT sum(price_unit * sol.product_uom_qty) AS othersum
                         AND (sol.create_date BETWEEN $P{from_date} AND $P{to_date})
                         AND (sol.state = 'confirmed' or sol.state ='done')
                         AND sol.order_partner_id = $P{patient_id}),
-procedure as (SELECT sum(price_unit * sol.product_uom_qty) AS presum
+procedure as (SELECT sum(price_unit * sol.product_uom_qty+ get_tax_amount_for_a_unit(sol.id)*sol.product_uom_qty - get_discount_for_a_unit(sol.id)*sol.product_uom_qty) AS presum
               FROM sale_order_line sol
               WHERE product_id IN (
                 SELECT pp.id
@@ -42,7 +42,7 @@ procedure as (SELECT sum(price_unit * sol.product_uom_qty) AS presum
                     AND (sol.create_date BETWEEN $P{from_date} AND $P{to_date})
                     AND (sol.state = 'confirmed' or sol.state ='done')
                     AND sol.order_partner_id = $P{patient_id}),
-medicine as (SELECT sum(price_unit * sol.product_uom_qty) AS medsum
+medicine as (SELECT sum(price_unit * sol.product_uom_qty+ get_tax_amount_for_a_unit(sol.id)*sol.product_uom_qty - get_discount_for_a_unit(sol.id)*sol.product_uom_qty) AS medsum
 FROM sale_order_line sol
 WHERE product_id IN (
 SELECT pp.id

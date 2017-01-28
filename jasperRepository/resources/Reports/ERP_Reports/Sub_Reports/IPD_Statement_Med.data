@@ -8,8 +8,8 @@
 	<parameter name="from_date" class="java.sql.Timestamp"/>
 	<parameter name="to_date" class="java.sql.Timestamp"/>
 	<queryString>
-		<![CDATA[SELECT sol.name,sol.product_uom_qty,sol.price_unit,
-  sum(price_unit * sol.product_uom_qty),pc.name as catname
+		<![CDATA[SELECT sol.name as name,sum(sol.product_uom_qty) as qty,sol.price_unit as unit_price,
+  sum(price_unit * sol.product_uom_qty+ get_tax_amount_for_a_unit(sol.id)*sol.product_uom_qty - get_discount_for_a_unit(sol.id)*sol.product_uom_qty),pc.name as catname
 FROM sale_order_line sol
 LEFT JOIN product_product pp on pp.id=sol.product_id
 LEFT JOIN product_template pt on pt.id=pp.product_tmpl_id
@@ -24,11 +24,11 @@ WHERE product_id IN(
       AND (sol.create_date BETWEEN  $P{from_date} AND $P{to_date})
       AND (sol.state = 'confirmed' or sol.state ='done')
       and sol.order_partner_id=$P{patient_id}
-GROUP BY order_id,sol.name,sol.product_uom_qty,sol.price_unit,pc.name,sol.product_id]]>
+      GROUP BY sol.name,sol.price_unit,pc.name,sol.product_id]]>
 	</queryString>
 	<field name="name" class="java.lang.String"/>
-	<field name="product_uom_qty" class="java.math.BigDecimal"/>
-	<field name="price_unit" class="java.math.BigDecimal"/>
+	<field name="qty" class="java.math.BigDecimal"/>
+	<field name="unit_price" class="java.math.BigDecimal"/>
 	<field name="sum" class="java.math.BigDecimal"/>
 	<field name="catname" class="java.lang.String"/>
 	<variable name="amount_sum" class="java.math.BigDecimal" calculation="Sum">
@@ -102,14 +102,14 @@ GROUP BY order_id,sol.name,sol.product_uom_qty,sol.price_unit,pc.name,sol.produc
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{product_uom_qty}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="340" y="0" width="100" height="15" uuid="50216558-c079-4730-9db0-bb69b8c19ad8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{price_unit}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{unit_price}.setScale( 2, java.math.RoundingMode. HALF_UP)+""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="450" y="0" width="100" height="15" uuid="0f6bee8b-3c99-43ff-86f7-90147709e303"/>

@@ -8,7 +8,8 @@
 	<parameter name="from_date" class="java.sql.Timestamp"/>
 	<parameter name="to_date" class="java.sql.Timestamp"/>
 	<queryString>
-		<![CDATA[SELECT sol.name,sol.product_uom_qty,sol.price_unit,sum(price_unit * sol.product_uom_qty)
+		<![CDATA[SELECT sol.name,sol.product_uom_qty,sol.price_unit,
+	  sum(price_unit * sol.product_uom_qty+ get_tax_amount_for_a_unit(sol.id)*sol.product_uom_qty - get_discount_for_a_unit(sol.id)*sol.product_uom_qty)
 FROM sale_order_line sol
 WHERE product_id IN(
   SELECT pp.id
