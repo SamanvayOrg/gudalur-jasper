@@ -230,7 +230,7 @@ given to the above tribal patient are true to the best of knowledge and belief.]
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Signature of the Hospital Authority]]></text>
+				<text><![CDATA[Medical Superintendent]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="247" y="0" width="180" height="30" uuid="c5119a9b-82cb-4aed-87f5-bd27a1dfe503"/>
