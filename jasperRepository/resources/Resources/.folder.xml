@@ -4,10 +4,10 @@
     <name>Resources</name>
     <label>Resources</label>
     <description></description>
-    <creationDate>2015-02-16T14:54:25.000+05:30</creationDate>
+    <creationDate>2016-03-24T14:12:55.000+05:30</creationDate>
     <updateDate>2016-01-07T16:13:48.000+05:30</updateDate>
+    <resource>department</resource>
     <resource>from_date</resource>
     <resource>jss_logo</resource>
     <resource>to_date</resource>
-    <resource>department</resource>
 </folder>

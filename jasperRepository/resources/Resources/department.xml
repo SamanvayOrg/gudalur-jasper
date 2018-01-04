@@ -2,25 +2,25 @@
 <inputControl>
     <folder>/Resources</folder>
     <name>department</name>
-    <version>9</version>
+    <version>31</version>
     <label>Please select a department</label>
     <description></description>
-    <creationDate>2016-01-24T16:17:58.628+05:30</creationDate>
-    <updateDate>2016-01-24T17:19:03.645+05:30</updateDate>
+    <creationDate>2017-07-24T10:49:39.000+05:30</creationDate>
+    <updateDate>2016-01-24T17:19:04.000+05:30</updateDate>
     <type>4</type>
     <mandatory>true</mandatory>
     <readOnly>false</readOnly>
     <visible>true</visible>
     <query>
         <localResource
-                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="query">
-            <folder>/Resources/departments_files</folder>
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="query">
+            <folder>/Resources/department_files</folder>
             <name>get_all_departments</name>
-            <version>4</version>
+            <version>1</version>
             <label>departmentQuery</label>
             <description></description>
-            <creationDate>2013-01-24T16:17:58.628+05:30</creationDate>
-            <updateDate>2013-01-24T16:17:58.628+05:30</updateDate>
+            <creationDate>2017-07-24T10:49:39.000+05:30</creationDate>
+            <updateDate>2013-01-24T16:17:59.000+05:30</updateDate>
             <language>sql</language>
             <queryString>select DISTINCT department_name from syncjob_department_category_mapping</queryString>
             <dataSource>
